@@ -115,26 +115,6 @@ const makeUnFriend = async (req, res) => {
   })
 }
 
-
-/* const thirdLayerQuery = (userId, query) => {
-  return `
-  SELECT U.id, U.name, 
-    CASE 
-        WHEN F1.friendId IS NOT NULL THEN 1 
-        WHEN F2.friendId IS NOT NULL THEN 2
-        WHEN F3.friendId IS NOT NULL THEN 3
-        ELSE 0 
-    END as connection
-  FROM Users U
-  LEFT JOIN Friends F1 ON U.id = F1.friendId AND F1.userId = ${userId}
-  LEFT JOIN Friends F2 ON U.id = F2.userId AND F2.friendId IN (SELECT friendId FROM Friends WHERE userId = ${userId})
-  LEFT JOIN Friends F3 ON U.id = F3.userId AND F3.friendId IN (SELECT friendId FROM Friends WHERE userId IN (SELECT friendId FROM Friends WHERE userId = ${userId}))
-  WHERE U.name LIKE '${query}%'
-  LIMIT 50;
-  `
-}
- */
-
 module.exports = {
   init,
   search,
